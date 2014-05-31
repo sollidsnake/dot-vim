@@ -1,0 +1,37 @@
+snippet pkgbuild
+# Maintainer: Your Name <youremail@domain.com>
+pkgname=NAME
+pkgver=VERSION
+pkgrel=1
+pkgdesc=""
+arch=()
+url=""
+license=('GPL')
+groups=()
+depends=()
+makedepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=(http://server/$pkgname-$pkgver.tar.gz)
+noextract=()
+md5sums=() #autofill with 'updpkgsums'
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  make DESTDIR="$pkgdir/" install
+}
+endsnippet
