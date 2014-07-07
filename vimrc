@@ -100,10 +100,11 @@ nnoremap <Leader><Leader> <Leader>
 nnoremap <Leader>vq :q<CR>
 nnoremap <Leader>vw :w<CR>
 nnoremap <Leader>s :w<CR>
-nnoremap <Leader>vv :e ~/.vimrc<CR>
+nnoremap <Leader>vv :e ~/.vim/vimrc<CR>
 nnoremap <Leader>r :VERun<CR>
 nnoremap <Leader>vr :e<CR>
 inoremap <C-Backspace> <C-w>
+inoremap <C-i> <C-k>
 
 nnoremap <Leader>wsp <Plug>SaveWinPosn
 nnoremap <Leader>wrp <Plug>RestoreWinPosn
@@ -114,8 +115,10 @@ nnoremap <Leader>tn :tabe<CR>
 nnoremap <Leader>tc :tabclose<CR>
 nnoremap <C-n> gt
 nnoremap <C-p> gT
+
 nnoremap ` '
 nnoremap ' `
+nnoremap ZZ zz
 
 inoremap <C-m> <Esc>a<Enter>
 inoremap <Enter> <Esc>a<Enter>
@@ -186,7 +189,7 @@ Plugin 'tmhedberg/matchit'
 Plugin 'SQLUtilities'
 Plugin 'align'
 "Plugin 'Syntastic'
-Plugin 'easytags.vim'
+"Plugin 'easytags.vim'
 Plugin 'xolox/vim-misc'
 "Plugin 'project.vim'
 "Plugin 'ProjectTag'
@@ -203,6 +206,10 @@ Plugin 'hdima/python-syntax'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'instant-markdown.vim'
 Plugin 'fugitive.vim'
+"Plugin 'Shougo/neocomplcache.vim'
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'unite.vim'
 
 call vundle#end()
 
@@ -210,7 +217,7 @@ filetype plugin indent on
 
 " statusline
 let g:airline_theme = 'lucius'
-let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing' ]
+let g:airline#extensions#whitespace#checks = [ 'trailing' ]
 
 " source
 if !exists('*SourceRange')
@@ -237,7 +244,7 @@ function! SaveBk()
 endfunction
 
 command! SaveBk call SaveBk()
-silent! autocmd BufRead,BufWrite *.* SaveBk
+autocmd BufRead,BufWrite *.* SaveBk
 
 " projects
 let httpDir = '/home/jesse/projects/http/'
